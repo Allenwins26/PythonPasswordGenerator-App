@@ -41,3 +41,29 @@ def generate():
 
     # declaring the empty string
     password = ""
+
+    # loop to generate the random password of the length entered           
+    # by the user
+    for x in range(passlen.get()):
+        password = password + random.choice(pass1)
+
+    # setting the password to the entry widget
+    passstr.set(password)
+
+# function to copy the password to the clipboard
+def copytoclipboard():
+    random_password = passstr.get()
+    pyperclip.copy(random_password)
+
+# Creating a text label widget
+Label(root, text="Password Generator Application", font="calibri 20 bold").pack()
+
+# Creating a text label widget
+Label(root, text="Enter password length").pack(pady=3)
+
+# Creating a entry widget to take password length entered by the 
+# user
+Entry(root, textvariable=passlen).pack(pady=3)
+
+# button to call the generate function
+Button(root, text="Generate Password", command=generate).pack(pady=7)
